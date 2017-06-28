@@ -25,7 +25,7 @@ class Student
 			if @@osis_database.include?(@osis) == false
 				@@osis_database << @osis
 			else
-				puts "Accidentally made dupilicate OSIS. Recreating now"
+				puts "Random OSIS generator dupilicated another student's OSIS. Regenerating now."
 				@osis = nil
 				create_id
 			end
@@ -33,7 +33,6 @@ class Student
 			puts "This student already has an OSIS. It is #{@osis}."
 		end
 	end
-
 end
 
 ######### CREATE PRACTICE STUDENT TO TEST METHODS #########
