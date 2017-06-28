@@ -20,13 +20,17 @@ class Student
 	end
 
 	def create_id
-		@osis = rand(0...999999)
-		if @@osis_database.include?(@osis) == false
-			osis = @osis
-			@@osis_database << @osis
+		if @osis == nil
+			@osis = rand(0...999999)
+			if @@osis_database.include?(@osis) == false
+				@@osis_database << @osis
+			else
+				puts "Accidentally made dupilicate OSIS. Recreating now"
+				@osis = nil
+				create_id
+			end
 		else
-			puts "Accidentally made dupilicate OSIS. Recreating now"
-			create_id
+			puts "This student already has an OSIS. It is #{@osis}."
 		end
 	end
 
@@ -39,6 +43,6 @@ freeman_donald_timothy.birth = {:month => 3, :day => 19, :year => 1986}
 
 freeman_donald_timothy.create_id
 
-
 puts freeman_donald_timothy.osis
+
 
